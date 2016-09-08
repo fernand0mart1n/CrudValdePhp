@@ -53,14 +53,14 @@
             $stmt->execute();
 
             if ($stmt->rowCount() == 1) {
-                return "Cliente dado de alta exitosamente.";
-            } else {
-                return "Error al cargar cliente.";
+                return "Cliente dado de baja exitosamente.";
             }
-
         } catch (PDOException $e) {
             $e->getMessage();
         }
+
+        return "Error al cargar cliente.";            
+
 	}
 
 	public function modificacion ($id, $nombre, $apellido, $fecha_nac, $nacionalidad, $activo) {
@@ -83,13 +83,13 @@
                 return "Cliente actualizado correctamente.";
             }
             else
-            {
-                return "Error al actualizar cliente.";
-            }
 
         } catch (PDOException $e) {
             $e->getMessage();
         }
+
+        return "Error al actualizar cliente.";
+
 	}
 
 	public function consulta ($id) {
@@ -106,11 +106,12 @@
             {
                 $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $cliente;
-            } else {
-                return "No se pudo encontrar al cliente.";
             }
             
         }catch (PDOException $e) {
             $e->getMessage();
         }
+
+        return "No se pudo encontrar al cliente.";
+        
 	}
