@@ -1,7 +1,7 @@
 <?php require "layout.php"; ?>
     <body>
-        <div class="col-xs-offset-3 col-xs-6">
-            <legend>Ver cliente</legend>
+        <legend>Ver cliente</legend>
+        <div class="form form-horizontal responsive col-xs-offset-3 col-xs-6">
             <div class="form-group">
                 <label class="col-xs-4 control-label" for="nombre"><b>Nombre:</b></label>
                 <div class="col-xs-8">
@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-offset-4 col-xs-8">
-                    <a class="btn btn-primary" href="homecontroller.php">
+                    <a class="btn btn-default" href="homecontroller.php">
                         <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
                     </a>
                     <a class="btn btn-primary pull-right" href="editarcontroller.php?id=<?php echo $cliente["id"] ?>">

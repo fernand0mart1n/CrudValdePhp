@@ -1,7 +1,7 @@
 <?php require "layout.php"; ?>
     <body>
+        <legend>Nuevo cliente</legend>
         <div class="col-xs-offset-3 col-xs-6">
-            <legend>Nuevo cliente</legend>
             <form class="form form-horizontal" method="POST" action="../controlador/nuevocontroller.php">
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="nombre"><b>Nombre:</b></label>
@@ -40,11 +40,11 @@
                 </div>
                 <div class="form-group">
                     <div class="col-xs-offset-4 col-xs-8">
-                        <a class="btn btn-primary" href="homecontroller.php">
+                        <a class="btn btn-default" href="homecontroller.php">
                             <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
                         </a>
-                        <button type="submit" class="btn btn-success pull-right">
-                            Guardar <span class="glyphicon glyphicon-save-file"></span>
+                        <button type="submit" class="btn btn-primary pull-right">
+                            Guardar <span class="glyphicon glyphicon-floppy-save"></span>
                         </button>
                     </div>
                 </div>

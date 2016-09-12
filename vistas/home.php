@@ -1,7 +1,7 @@
 <?php require "layout.php"; ?>
     <body>
         <div class="row">
-            <div class="col-xs-offset-2 col-xs-8 ">
+            <div class="col-xs-offset-1 col-xs-10 ">
                 <table class="table table-responsive table-striped table-hover table-condensed">
                     <thead>
                         <h3>Clientes</h3>
@@ -50,7 +50,7 @@
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a class="btn btn-info" href="vercontroller.php"><span class="glyphicon glyphicon-eye-open"></span> Ver</a>
+                                        <a class="btn btn-info" href="vercontroller.php?id=<?php echo $cliente["id"]; ?>"><span class="glyphicon glyphicon-eye-open"></span> Ver</a>
                                         <a class="btn btn-primary" href="editarcontroller.php?id=<?php echo $cliente["id"]; ?>"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                         <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
                                     </div>                                    

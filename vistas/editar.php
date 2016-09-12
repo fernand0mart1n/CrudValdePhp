@@ -1,7 +1,7 @@
 <?php require "layout.php"; ?>
     <body>
+        <legend>Editar cliente</legend>
         <div class="col-xs-offset-3 col-xs-6">
-            <legend>Editar cliente</legend>
             <form class="form form-horizontal" method="POST" action="../controlador/editarcontroller.php">
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="nombre"><b>Nombre:</b></label>
@@ -42,7 +42,7 @@
                 <input type="hidden" value="<?php echo $cliente["id"]; ?>" id="id" name="id"></input>
                 <div class="form-group">
                     <div class="col-xs-offset-4 col-xs-8">
-                        <a class="btn btn-primary" href="homecontroller.php">
+                        <a class="btn btn-default" href="homecontroller.php">
                             <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
                         </a>
                         <button type="submit" class="btn btn-primary pull-right">Editar <span class="glyphicon glyphicon-pencil"></span></button>
