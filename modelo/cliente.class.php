@@ -51,7 +51,7 @@
             try {
                 $sql = "DELETE FROM clientes WHERE id = :id";
                 $stmt = $conn->prepare($sql);
-                $stmt->bindParam('id', $cliente['id'], PDO::PARAM_STR);
+                $stmt->bindParam('id', $id, PDO::PARAM_STR);
                 $stmt->execute();
 
                 if ($stmt->rowCount() == 1) {

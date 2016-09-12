@@ -11,4 +11,5 @@
         <link rel="stylesheet" href="/CrudValdePhp/assets/css/crud.css">
         <script src="/CrudValdePhp/assets/bower_components/jquery/dist/jquery.min.js"></script>
         <script src="/CrudValdePhp/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/CrudValdePhp/assets/js/crud.js"></script>
     </head>
