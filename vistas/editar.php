@@ -35,8 +35,8 @@
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="activo"><b>Activo:</b></label>
                     <div class="col-xs-8">
-                        <input type="radio" id="activo" name="activo" value="si" checked> Si<br>
-                        <input type="radio" id="activo" name="activo" value="no"> No<br>
+                        <input type="radio" id="activo" name="activo" value="1" checked> Si<br>
+                        <input type="radio" id="activo" name="activo" value="0"> No<br>
                     </div>
                 </div>
                 <input type="hidden" value="<?php echo $cliente["id"]; ?>" id="id" name="id"></input>
