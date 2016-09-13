@@ -4,6 +4,7 @@
 
 	require_once "../modelo/cliente.class.php";
 	require_once "../modelo/nacionalidad.class.php";
+	require "validatorcontroller.php";
 
 	$title = "Nuevo cliente";
 
@@ -15,6 +16,8 @@
 			$nacionalidad   = $nacionalidades::listar();
 
 			require "../vistas/nuevo.php";
+
+			unset($_SESSION["errores"]);
 
 		} catch(Exception $e) {
 			header("Location: ../vistas/home.php?msg".$e->getMessage());
@@ -32,10 +35,21 @@
 		$cliente["nacionalidad"] = $_POST['nacionalidad'];
 		$cliente["activo"]       = $_POST['activo'];
 
-		$user = new Cliente();
-		$clientes = $user::alta($cliente);
+		$_SESSION["errores"] = validarCliente($cliente);
 
-		header("Location: ../controlador/homecontroller.php");
+		if(count($_SESSION["errores"])) {
+
+			header("Location: nuevocontroller.php");
+
+		} else {
+
+			$cli = new Cliente();
+			$clientes = $cli::alta($cliente);
+
+			header("Location: homecontroller.php");
+
+		}
+
 		die();
 
 	}

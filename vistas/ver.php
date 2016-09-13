@@ -31,8 +31,13 @@
             <div class="form-group">
                 <label class="col-xs-4 control-label" for="activo"><b>Activo:</b></label>
                 <div class="col-xs-8">
-                    <input type="radio" id="activo" name="activo" value="1" checked disabled> Si<br>
-                    <input type="radio" id="activo" name="activo" value="0" disabled> No<br>
+                    <?php if($cliente["activo"] == 1): ?>
+                        <input type="radio" id="activo" name="activo" value="1" disabled checked=""> Si<br>
+                        <input type="radio" id="activo" name="activo" value="0" disabled> No
+                    <?php else: ?>
+                        <input type="radio" id="activo" name="activo" value="1" disabled> Si<br>
+                        <input type="radio" id="activo" name="activo" value="0" disabled checked> No
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="form-group">

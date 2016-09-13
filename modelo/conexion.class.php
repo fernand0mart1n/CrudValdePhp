@@ -1,11 +1,15 @@
 <?php
+
+require "usuario.php";
+
 class Conexion extends PDO
 {
+
 	private $tipo_de_base   = 'mysql';
 	private $host           = 'localhost';
 	private $nombre_de_base = 'clientes';
-	private $user           = 'root';
-	private $pass           = 'udc';
+	private $user           = USER;
+	private $pass           = PASS;
 	public function __construct(){
 	  
 	  try{
