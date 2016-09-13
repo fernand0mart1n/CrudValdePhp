@@ -26,7 +26,7 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
-		$cliente["nombre"] 	     = $_POST['nombre'];
+		$cliente["nombre"]       = $_POST['nombre'];
 		$cliente["apellido"]     = $_POST['apellido'];
 		$cliente["fecha_nac"]    = $_POST['fecha_nac'];
 		$cliente["nacionalidad"] = $_POST['nacionalidad'];
