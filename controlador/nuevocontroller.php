@@ -5,13 +5,14 @@
 	require_once "../modelo/cliente.class.php";
 	require_once "../modelo/nacionalidad.class.php";
 
+	$title = "Nuevo cliente";
 
 	if($_SERVER['REQUEST_METHOD'] == 'GET') {
 		try
 		{
 
 			$nacionalidades = new Nacionalidad();
-			$nacionalidad = $nacionalidades::listar();
+			$nacionalidad   = $nacionalidades::listar();
 
 			require "../vistas/nuevo.php";
 
@@ -25,11 +26,11 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
-		$cliente["nombre"] = $_POST['nombre'];
-		$cliente["apellido"] = $_POST['apellido'];
-		$cliente["fecha_nac"] = $_POST['fecha_nac'];
+		$cliente["nombre"] 	     = $_POST['nombre'];
+		$cliente["apellido"]     = $_POST['apellido'];
+		$cliente["fecha_nac"]    = $_POST['fecha_nac'];
 		$cliente["nacionalidad"] = $_POST['nacionalidad'];
-		$cliente["activo"] = $_POST['activo'];
+		$cliente["activo"]       = $_POST['activo'];
 
 		$user = new Cliente();
 		$clientes = $user::alta($cliente);

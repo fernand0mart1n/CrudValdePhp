@@ -10,7 +10,7 @@
             $conn = new Conexion();
 
             try {
-                $sql = "SELECT * FROM nacionalidades";
+                $sql  = "SELECT * FROM nacionalidades";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
                 return $stmt->fetchAll();

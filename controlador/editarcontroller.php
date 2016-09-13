@@ -5,16 +5,18 @@
 	require_once "../modelo/cliente.class.php";
 	require_once "../modelo/nacionalidad.class.php";
 
+	$title = "Editar cliente";
+
 	if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
 		
 		try
 		{
-			$id = $_GET['id'];
+			$id      = $_GET['id'];
 			$cliente = new Cliente();
 			$cliente = $cliente::consulta($id);
 
 			$nacionalidades = new Nacionalidad();
-			$nacionalidad = $nacionalidades::listar();
+			$nacionalidad   = $nacionalidades::listar();
 
 			require "../vistas/editar.php";
 		} catch(Exception $e) {
@@ -25,14 +27,14 @@
 	}
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$cliente["id"] = $_POST['id'];
-		$cliente["nombre"] = $_POST['nombre'];
-		$cliente["apellido"] = $_POST['apellido'];
-		$cliente["fecha_nac"] = $_POST['fecha_nac'];
+		$cliente["id"]           = $_POST['id'];
+		$cliente["nombre"]       = $_POST['nombre'];
+		$cliente["apellido"]     = $_POST['apellido'];
+		$cliente["fecha_nac"]    = $_POST['fecha_nac'];
 		$cliente["nacionalidad"] = $_POST['nacionalidad'];
-		$cliente["activo"] = $_POST['activo'];
+		$cliente["activo"]       = $_POST['activo'];
 
-		$user = new Cliente();
+		$user     = new Cliente();
 		$clientes = $user::modificar($cliente);
 
 		header("Location: ../controlador/homecontroller.php");

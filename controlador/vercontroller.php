@@ -4,10 +4,12 @@
 
 	require_once "../modelo/cliente.class.php";
 
+	$title = "Ver cliente";
+
 	if(isset($_GET['id'])){
 		try
 		{
-			$id = $_GET['id'];
+			$id      = $_GET['id'];
 			$cliente = new Cliente();
 			$cliente = $cliente::consulta($id);
 

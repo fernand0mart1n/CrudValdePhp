@@ -8,8 +8,8 @@
 		
 		try
 		{
-			$id = $_GET['id'];
-			$activo = $_GET['activo'];
+			$id      = $_GET['id'];
+			$activo  = $_GET['activo'];
 			$cliente = new Cliente();
 
 			if ($activo == 1) {

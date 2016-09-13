@@ -8,7 +8,7 @@
 	{
 
 		$cli = new Cliente();
-		$id = $_POST['id'];
+		$id  = $_POST['id'];
 
 		$clientes = $cli::baja($id);
 

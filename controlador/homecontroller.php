@@ -4,11 +4,17 @@
 
 	require_once "../modelo/cliente.class.php";
 
+	$title = "Listado de clientes";
+
 	try
 	{
 
-		$cliente = new Cliente();
+		$cliente  = new Cliente();
 		$clientes = $cliente::listar();
+
+		/*foreach ($clientes as &$cliente) {
+			//Acá va el parseo de edad
+		}*/
 
 		require "../vistas/home.php";
 

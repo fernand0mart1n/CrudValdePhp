@@ -12,7 +12,7 @@
             $conn = new Conexion();
 
             try {
-                $sql = "SELECT * FROM clientes";
+                $sql  = "SELECT * FROM clientes";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
                 return $stmt->fetchAll();
@@ -33,7 +33,8 @@
             $conn = new Conexion();
 
             try {
-                $sql = "INSERT INTO clientes VALUES(null, :nombre, :apellido, :fecha_nac, :nacionalidad, :activo)";
+                $sql  = "INSERT INTO clientes " . 
+                        "VALUES(null, :nombre, :apellido, :fecha_nac, :nacionalidad, :activo)";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam('nombre', $cliente['nombre'], PDO::PARAM_STR);
                 $stmt->bindParam('apellido', $cliente['apellido'], PDO::PARAM_STR);
@@ -51,7 +52,7 @@
             $conn = new Conexion();
 
             try {
-                $sql = "DELETE FROM clientes WHERE id = :id";
+                $sql  = "DELETE FROM clientes WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam('id', $id, PDO::PARAM_STR);
                 $stmt->execute();
@@ -72,7 +73,10 @@
             $conn = new Conexion();
 
             try {
-                $sql = "UPDATE clientes SET nombre = :nombre, apellido = :apellido, fecha_nac = :fecha_nac, nacionalidad = :nacionalidad, activo = :activo WHERE id = :id";
+                $sql  = "UPDATE clientes " . 
+                        "SET nombre = :nombre, apellido = :apellido, " . 
+                        "fecha_nac = :fecha_nac, nacionalidad = :nacionalidad, activo = :activo " . 
+                        "WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam('id', $cliente['id'], PDO::PARAM_STR);
                 $stmt->bindParam('nombre', $cliente['nombre'], PDO::PARAM_STR);
@@ -100,7 +104,9 @@
             $conn = new Conexion();
 
             try {
-                $sql = "UPDATE clientes SET activo = :activo WHERE id = :id";
+                $sql  = "UPDATE clientes " . 
+                        "SET activo = :activo " . 
+                        "WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam('id', $id, PDO::PARAM_STR);
                 $stmt->bindParam('activo', $cambio, PDO::PARAM_STR);
@@ -124,7 +130,8 @@
             $conn = new Conexion();
 
             try {
-                $sql = "SELECT * FROM clientes WHERE id = :id";
+                $sql  = "SELECT * FROM clientes " . 
+                        "WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':id', $id, PDO::PARAM_STR);
                 $stmt->execute();

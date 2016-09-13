@@ -28,10 +28,10 @@
                     </tr>
                     <?php foreach ($clientes as $cliente): ?>
                         <tr>
-                            <td>
+                            <td class="nombre">
                                 <?php echo $cliente["nombre"]; ?>
                             </td>
-                            <td>
+                            <td class="apellido">
                                 <?php echo $cliente["apellido"]; ?>
                             </td>
                             <td>
