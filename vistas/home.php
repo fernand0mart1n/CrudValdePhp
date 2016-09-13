@@ -52,9 +52,9 @@
                                     <a class="btn btn-default" href="vercontroller.php?id=<?php echo $cliente["id"]; ?>"><span class="glyphicon glyphicon-eye-open"></span> Ver</a>
                                     <a class="btn btn-primary" href="editarcontroller.php?id=<?php echo $cliente["id"]; ?>"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
                                     <?php if($cliente["activo"] == 1): ?>
-                                        <a class="btn btn-info" href="activocontroller.php?id=<?php echo $cliente["id"]; ?>&activo=<?php $cliente["activo"]; ?>"><span class="glyphicon glyphicon-remove"></span> Desactivar</a>
+                                        <a class="btn btn-info" href="activocontroller.php?id=<?php echo $cliente["id"]; ?>&activo=<?php echo $cliente["activo"]; ?>"><span class="glyphicon glyphicon-remove"></span> Desactivar</a>
                                     <?php else: ?>
-                                        <a class="btn btn-info" href="activocontroller.php?id=<?php echo $cliente["id"]; ?>&activo=<?php $cliente["activo"]; ?>"><span class="glyphicon glyphicon-ok"></span> Activar</a>
+                                        <a class="btn btn-info" href="activocontroller.php?id=<?php echo $cliente["id"]; ?>&activo=<?php echo $cliente["activo"]; ?>"><span class="glyphicon glyphicon-ok"></span> Activar</a>
                                     <?php endif; ?>
                                     <button class="btn btn-danger delete" id="<?php echo $cliente["id"] ?>"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
                                 </div>                                    

@@ -1,6 +1,8 @@
 <?php
 
     require_once "conexion.class.php";
+    define("ACTIVO", 1);
+    define("INACTIVO", 0);
 
     class Cliente {
 
@@ -92,6 +94,30 @@
             return "Error al actualizar cliente.";
 
     	}
+
+        function activo ($id, $cambio) {
+            
+            $conn = new Conexion();
+
+            try {
+                $sql = "UPDATE clientes SET activo = :activo WHERE id = :id";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam('id', $id, PDO::PARAM_STR);
+                $stmt->bindParam('activo', $cambio, PDO::PARAM_STR);
+                $stmt->execute();
+
+                if($stmt->rowCount() > 0)
+                {
+                    return "Cliente actualizado correctamente.";
+                }
+
+            } catch (PDOException $e) {
+                $e->getMessage();
+            }
+
+            return "Error al actualizar cliente.";
+
+        }
 
     	function consulta ($id) {
     		
