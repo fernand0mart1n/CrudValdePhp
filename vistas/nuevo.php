@@ -6,7 +6,7 @@
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="nombre"><strong>Nombre:</strong></label>
                     <div class="col-xs-8">
-                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required autofocus>
+                        <input type="text" id="nombre" name="nombre" value="<?php echo $_SESSION["cliente"]["nombre"] ?>" class="form-control" placeholder="Nombre" required autofocus>
                         <?php if(!empty($_SESSION["errores"]["nombre"])): ?>
                             <div class="alert alert-danger alert-dismissable" role="alert">
                             <button type="button" class="close" aria-label="Close">
@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="apellido"><strong>Apellido:</strong></label>
                     <div class="col-xs-8">
-                        <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellido" required>
+                        <input type="text" id="apellido" name="apellido" value="<?php echo $_SESSION["cliente"]["apellido"] ?>" class="form-control" placeholder="Apellido" required>
                         <?php if(!empty($_SESSION["errores"]["apellido"])): ?>
                             <div class="alert alert-danger alert-dismissable" role="alert">
                             <button type="button" class="close" aria-label="Close">
@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="fecha_nac"><strong>Fecha de nacimiento:</strong></label>
                     <div class="col-xs-8">
-                        <input type="date" id="fecha_nac" name="fecha_nac" class="form-control" required>
+                        <input type="date" id="fecha_nac" name="fecha_nac" value="<?php echo $_SESSION["cliente"]["fecha_nac"] ?>" class="form-control" required>
                         <?php if(!empty($_SESSION["errores"]["fecha_nac"])): ?>
                             <div class="alert alert-danger alert-dismissable" role="alert">
                             <button type="button" class="close" aria-label="Close">
@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <label for="nacionalidad" class="col-xs-4 control-label">Nacionalidad:</label>
                     <div class="col-xs-8">
-                        <select class="form-control" id="nacionalidad" name="nacionalidad" required>
+                        <select class="form-control" id="nacionalidad" name="nacionalidad" value="<?php echo $_SESSION["cliente"]["nacionalidad"] ?>" required>
                             <?php foreach ($nacionalidad as $pais): ?>
                                 <option value="<?php echo $pais["id"]; ?>"><?php echo $pais["nacionalidad"]; ?></option> 
                             <?php endforeach; ?>
@@ -62,8 +62,18 @@
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="activo"><strong>Activo:</strong></label>
                     <div class="col-xs-8">
-                        <input type="radio" id="activo" name="activo" value="1" checked> Si<br>
-                        <input type="radio" id="activo" name="activo" value="0"> No<br>
+                        <?php if(!empty($_SESSION["cliente"]["activo"])): ?>
+                            <?php if($_SESSION["cliente"]["activo"] == "1"): ?>
+                                <input type="radio" id="activo" name="activo" value="1" checked=""> Si<br>
+                                <input type="radio" id="activo" name="activo" value="0"> No
+                            <?php else: ?>
+                                <input type="radio" id="activo" name="activo" value="1"> Si<br>
+                                <input type="radio" id="activo" name="activo" value="0" checked> No
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <input type="radio" id="activo" name="activo" value="1" checked> Si<br>
+                            <input type="radio" id="activo" name="activo" value="0"> No<br>
+                        <?php endif; ?>
                         <?php if(!empty($_SESSION["errores"]["activo"])): ?>
                             <div class="alert alert-danger alert-dismissable" role="alert">
                             <button type="button" class="close" aria-label="Close">
@@ -85,5 +95,5 @@
                 </div>
             </form>
         </div>
-    </strongody>
+    </body>
 </html>

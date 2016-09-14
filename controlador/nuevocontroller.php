@@ -17,6 +17,7 @@
 			require "../vistas/nuevo.php";
 
 			unset($_SESSION["errores"]);
+			unset($_SESSION["cliente"]);
 
 		} catch(Exception $e) {
 			header("Location: ../vistas/home.php?msg".$e->getMessage());
@@ -40,6 +41,7 @@
 
 		if(count($_SESSION["errores"])) {
 
+			$_SESSION["cliente"] = $cliente;
 			header("Location: nuevocontroller.php");
 
 		} else {
