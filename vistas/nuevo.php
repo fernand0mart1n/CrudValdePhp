@@ -88,7 +88,6 @@
                         </button>
                     </div>
                 </div>
-                <?php var_dump($_SESSION["cliente"]);?>
             </form>
         </div>
     </body>
