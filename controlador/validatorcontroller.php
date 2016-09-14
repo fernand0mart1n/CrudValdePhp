@@ -22,7 +22,7 @@
 			$errores["nacionalidad"] = "La nacionalidad no puede estar vacía";
 		}
 
-		if(empty($cliente["activo"])) {
+		if($cliente["activo"] == "") {
 			$errores["activo"] = "El cliente debe estar activo o inactivo";	
 		}
 
