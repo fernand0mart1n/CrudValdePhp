@@ -19,6 +19,9 @@
 			$nacionalidad   = $nacionalidades::listar();
 
 			require "../vistas/editar.php";
+
+			unset($_SESSION["errores"]);
+
 		} catch(Exception $e) {
 			header("Location: ../vistas/home.php?msg".$e->getMessage());
 		}
@@ -27,6 +30,9 @@
 	}
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+		require "validatorcontroller.php";
+
 		$cliente["id"]           = $_POST['id'];
 		$cliente["nombre"]       = $_POST['nombre'];
 		$cliente["apellido"]     = $_POST['apellido'];
@@ -34,9 +40,21 @@
 		$cliente["nacionalidad"] = $_POST['nacionalidad'];
 		$cliente["activo"]       = $_POST['activo'];
 
-		$user     = new Cliente();
-		$clientes = $user::modificar($cliente);
+		$_SESSION["errores"] = validarCliente($cliente);
 
-		header("Location: ../controlador/homecontroller.php");
+		if(count($_SESSION["errores"])) {
+
+			header("Location: editarcontroller.php?id=" . $cliente["id"]);
+
+		} else {
+
+			$cli      = new Cliente();
+			$clientes = $cli::modificar($cliente);
+
+			header("Location: homecontroller.php");
+
+		}
+
 		die();
+
 	}

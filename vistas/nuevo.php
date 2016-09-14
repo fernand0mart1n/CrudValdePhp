@@ -8,7 +8,6 @@
                     <div class="col-xs-8">
                         <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required autofocus>
                         <?php if(!empty($_SESSION["errores"]["nombre"])): ?>
-
                             <div class="alert alert-danger" role="alert"><b><?php echo $_SESSION["errores"]["nombre"]; ?></b></div>
                         <?php endif; ?>
                     </div>
@@ -36,7 +35,7 @@
                     <div class="col-xs-8">
                         <select class="form-control" id="nacionalidad" name="nacionalidad" required>
                             <?php foreach ($nacionalidad as $pais): ?>
-                                <option value="<?php echo $pais["id"]; ?>"><?php echo $pais["nacionalidad"]; ?></option>  
+                                <option value="<?php echo $pais["id"]; ?>"><?php echo $pais["nacionalidad"]; ?></option> 
                             <?php endforeach; ?>
                         </select>
                         <?php if(!empty($_SESSION["errores"]["nacionalidad"])): ?>

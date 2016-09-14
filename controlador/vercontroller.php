@@ -14,6 +14,7 @@
 			$cliente = $cliente::consulta($id);
 
 			require "../vistas/ver.php";
+			
 		} catch(Exception $e) {
 			header("Location: ../vistas/home.php?msg".$e->getMessage());
 		}

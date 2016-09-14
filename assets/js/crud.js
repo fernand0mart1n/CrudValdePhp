@@ -15,8 +15,15 @@ $(document).ready(function(){
                 }
             });
             $(this).parents("tr").animate({ backgroundColor: "#003" }, "500")
-            .animate({ opacity: "hide" }, "500");
+            .animate({ opacity: "hide" }, "1000");
         }
         return false;
     });
+
+    //$(".alert").hide(8000);
+
+    setTimeout(function() {
+        $('.alert').hide(1000);
+    }, 8000);
+
 });

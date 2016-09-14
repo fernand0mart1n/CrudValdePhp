@@ -4,7 +4,6 @@
 
 	require_once "../modelo/cliente.class.php";
 	require_once "../modelo/nacionalidad.class.php";
-	require "validatorcontroller.php";
 
 	$title = "Nuevo cliente";
 
@@ -29,6 +28,8 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
+		require "validatorcontroller.php";
+
 		$cliente["nombre"]       = $_POST['nombre'];
 		$cliente["apellido"]     = $_POST['apellido'];
 		$cliente["fecha_nac"]    = $_POST['fecha_nac'];
@@ -43,7 +44,7 @@
 
 		} else {
 
-			$cli = new Cliente();
+			$cli      = new Cliente();
 			$clientes = $cli::alta($cliente);
 
 			header("Location: homecontroller.php");
