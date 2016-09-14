@@ -21,10 +21,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="nacionalidad" class="col-xs-4 control-label">Nacionalidad:</label>
+                <label for="nacionalidad_id" class="col-xs-4 control-label">Nacionalidad:</label>
                 <div class="col-xs-8">
-                    <select class="form-control" id="nacionalidad" name="nacionalidad" readonly>
-                        <option value="<?php echo $cliente["nacionalidad"]; ?>"><?php echo $cliente["nacionalidad"]; ?></option>  
+                    <select class="form-control" id="nacionalidad_id" name="nacionalidad_id" readonly>
+                        <option value="<?php echo $cliente["nacionalidad_id"]; ?>"><?php echo $cliente["nacionalidad"]; ?></option>  
                     </select>
                 </div>
             </div>

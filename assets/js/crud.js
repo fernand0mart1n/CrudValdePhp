@@ -18,8 +18,8 @@ $(document).ready(function(){
             .animate({ opacity: "hide" }, "1000");
 
             $(".table-footer").before('<div class="alert alert-info" role="alert">' +
-                                        '<strong>El cliente ' + nombreCompleto + ' ha sido eliminado</strong>' +
-                                        '</div>');
+                                      '<strong>El cliente ' + nombreCompleto + ' ha sido eliminado</strong>' +
+                                      '</div>');
 
         }
 

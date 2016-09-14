@@ -43,9 +43,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="nacionalidad" class="col-xs-4 control-label">Nacionalidad:</label>
+                    <label for="nacionalidad_id" class="col-xs-4 control-label">Nacionalidad:</label>
                     <div class="col-xs-8">
-                        <select class="form-control" id="nacionalidad" name="nacionalidad" value="<?php echo $_SESSION["cliente"]["nacionalidad"] ?>" required>
+                        <select class="form-control" id="nacionalidad_id" name="nacionalidad_id" value="<?php echo $_SESSION["cliente"]["nacionalidad_id"] ?>" required>
+                            <option value="">Seleccione su país</option> 
                             <?php foreach ($nacionalidad as $pais): ?>
                                 <option value="<?php echo $pais["id"]; ?>"><?php echo $pais["nacionalidad"]; ?></option> 
                             <?php endforeach; ?>

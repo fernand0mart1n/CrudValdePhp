@@ -33,12 +33,12 @@
 
 		require "validatorcontroller.php";
 
-		$cliente["id"]           = $_POST['id'];
-		$cliente["nombre"]       = $_POST['nombre'];
-		$cliente["apellido"]     = $_POST['apellido'];
-		$cliente["fecha_nac"]    = $_POST['fecha_nac'];
-		$cliente["nacionalidad"] = $_POST['nacionalidad'];
-		$cliente["activo"]       = $_POST['activo'];
+		$cliente["id"]              = $_POST['id'];
+		$cliente["nombre"]          = $_POST['nombre'];
+		$cliente["apellido"]        = $_POST['apellido'];
+		$cliente["fecha_nac"]       = $_POST['fecha_nac'];
+		$cliente["nacionalidad_id"] = $_POST['nacionalidad_id'];
+		$cliente["activo"]          = $_POST['activo'];
 
 		$_SESSION["errores"] = validarCliente($cliente);
 

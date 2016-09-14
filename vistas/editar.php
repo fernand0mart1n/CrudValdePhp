@@ -43,12 +43,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="nacionalidad" class="col-xs-4 control-label">Nacionalidad:</label>
+                    <label for="nacionalidad_id" class="col-xs-4 control-label">Nacionalidad:</label>
                     <div class="col-xs-8">
-                        <select class="form-control" id="nacionalidad" name="nacionalidad" required>
-                            <option value="<?php echo $cliente["nacionalidad"]; ?>"><?php echo "nada"; ?></option> 
+                        <select class="form-control" id="nacionalidad_id" name="nacionalidad_id" required>
+                            <option value="">Seleccione su país</option> 
                             <?php foreach ($nacionalidad as $pais): ?>
-                                <option value="<?php echo $pais["id"]; ?>"><?php echo $pais["nacionalidad"]; ?></option> 
+                                <option value="<?php echo $pais["id"]; ?>" <?php if($pais["id"] == $cliente["nacionalidad_id"]){echo "selected";} ?>><?php echo $pais["nacionalidad"]; ?></option>
                             <?php endforeach; ?>
                         </select>
                         <?php if(!empty($_SESSION["errores"]["nacionalidad"])): ?>

@@ -18,7 +18,7 @@
 			$errores["fecha_nac"] = "La fecha de nacimiento no puede estar vacía";
 		}
 
-		if(empty($cliente["nacionalidad"])) {
+		if(empty($cliente["nacionalidad_id"])) {
 			$errores["nacionalidad"] = "La nacionalidad no puede estar vacía";
 		}
 
