@@ -20,10 +20,8 @@ $(document).ready(function(){
         return false;
     });
 
-    //$(".alert").hide(8000);
-
-    setTimeout(function() {
-        $('.alert').hide(1000);
-    }, 8000);
+    $(".alert button.close").click(function (e) {
+        $(this).parent().hide('slow');
+    });
 
 });
