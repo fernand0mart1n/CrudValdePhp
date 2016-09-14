@@ -18,6 +18,8 @@
 
 		require "../vistas/home.php";
 
+		unset($_SESSION["mensaje"]);
+
 	} catch(Exception $e) {
 		header("Location: ../vistas/home.php?msg".$e->getMessage());
 	}

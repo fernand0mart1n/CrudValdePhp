@@ -16,12 +16,25 @@ $(document).ready(function(){
             });
             $(this).parents("tr").animate({ backgroundColor: "#003" }, "500")
             .animate({ opacity: "hide" }, "1000");
+
+            $(".table-footer").before('<div class="alert alert-info" role="alert">' +
+                                        '<strong>El cliente ' + nombreCompleto + ' ha sido eliminado</strong>' +
+                                        '</div>');
+
         }
+
         return false;
+
     });
 
-    $(".alert button.close").click(function (e) {
+    $(".alert-danger button.close").click(function (e) {
         $(this).parent().hide('slow');
     });
+
+    setTimeout(function() {
+        $('.alert-info').hide('slow');
+    }, 6000);
+
+    $("table tbody").not(":has(td)").html("<tr><td colspan=60%>No se han cargado clientes</td></tr>");
 
 });

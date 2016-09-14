@@ -11,11 +11,19 @@
 			$id      = $_GET['id'];
 			$activo  = $_GET['activo'];
 			$cliente = new Cliente();
+			$cli     = new Cliente();
+
+			$cli = $cli::consulta($id);
 
 			if ($activo == 1) {
 				$cliente = $cliente::activo($id, INACTIVO);
+
+				$_SESSION["mensaje"] = "El cliente " . $cli["nombre"] . " " . $cli["apellido"] . " ha sido desactivado";
+
 			} else {
 				$cliente = $cliente::activo($id, ACTIVO);
+
+				$_SESSION["mensaje"] = "El cliente " . $cli["nombre"] . " " . $cli["apellido"] . " ha sido activado";
 			}
 
 			header("Location: homecontroller.php");

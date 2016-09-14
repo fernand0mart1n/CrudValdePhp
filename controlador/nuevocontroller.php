@@ -49,6 +49,8 @@
 			$cli      = new Cliente();
 			$clientes = $cli::alta($cliente);
 
+			$_SESSION["mensaje"] = "El cliente " . $cliente["nombre"] . " " . $cliente["apellido"] . " ha sido creado éxitosamente";
+
 			header("Location: homecontroller.php");
 
 		}

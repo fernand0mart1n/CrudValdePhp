@@ -4,8 +4,6 @@
             <table class="table table-responsive table-bordered table-striped table-hover table-condensed">
                 <thead>
                     <h3>Clientes</h3>
-                </thead>
-                <tbody>
                     <tr>
                         <th>
                             Nombre
@@ -26,6 +24,8 @@
                             Acciones
                         </th>
                     </tr>
+                </thead>
+                <tbody>
                     <?php foreach ($clientes as $cliente): ?>
                         <tr>
                             <td class="nombre">
@@ -63,7 +63,12 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <hr>
+            <?php if(!empty($_SESSION["mensaje"])): ?>
+                <div class="alert alert-info" role="alert">
+                    <strong><?php echo $_SESSION["mensaje"]; ?></strong>
+                </div>
+            <?php endif; ?>
+            <hr class="table-footer">
             <a class="btn btn-success pull-right" href="nuevocontroller.php"><span class="glyphicon glyphicon-plus"></span> Nuevo cliente</a>
         </div>
     </body>

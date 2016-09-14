@@ -51,6 +51,8 @@
 			$cli      = new Cliente();
 			$clientes = $cli::modificar($cliente);
 
+			$_SESSION["mensaje"] = "El cliente " . $cliente["nombre"] . " " . $cliente["apellido"] . " ha sido modificado éxitosamente";
+
 			header("Location: homecontroller.php");
 
 		}
