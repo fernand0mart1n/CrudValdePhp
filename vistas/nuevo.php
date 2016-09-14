@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="activo"><strong>Activo:</strong></label>
                     <div class="col-xs-8">
-                        <?php if(empty($_SESSION["cliente"]["activo"])): ?>
+                        <?php if(isset($_SESSION["cliente"]["activo"]) && $_SESSION["cliente"]["activo"] == "0"): ?>
                                 <input type="radio" id="activo" name="activo" value="1"> Si<br>
                                 <input type="radio" id="activo" name="activo" value="0" checked> No
                         <?php else: ?>
