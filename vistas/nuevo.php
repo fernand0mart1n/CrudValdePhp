@@ -62,14 +62,9 @@
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="activo"><strong>Activo:</strong></label>
                     <div class="col-xs-8">
-                        <?php if(!empty($_SESSION["cliente"]["activo"])): ?>
-                            <?php if($_SESSION["cliente"]["activo"] == "1"): ?>
-                                <input type="radio" id="activo" name="activo" value="1" checked=""> Si<br>
-                                <input type="radio" id="activo" name="activo" value="0"> No
-                            <?php else: ?>
+                        <?php if(empty($_SESSION["cliente"]["activo"])): ?>
                                 <input type="radio" id="activo" name="activo" value="1"> Si<br>
                                 <input type="radio" id="activo" name="activo" value="0" checked> No
-                            <?php endif; ?>
                         <?php else: ?>
                             <input type="radio" id="activo" name="activo" value="1" checked> Si<br>
                             <input type="radio" id="activo" name="activo" value="0"> No<br>
@@ -93,6 +88,7 @@
                         </button>
                     </div>
                 </div>
+                <?php var_dump($_SESSION["cliente"]);?>
             </form>
         </div>
     </body>
