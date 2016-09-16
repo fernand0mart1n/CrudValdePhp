@@ -9,6 +9,7 @@
 	if(isset($_GET['id'])){
 		try
 		{
+			
 			$id      = $_GET['id'];
 			$cliente = new Cliente();
 			$cliente = $cliente::consulta($id);

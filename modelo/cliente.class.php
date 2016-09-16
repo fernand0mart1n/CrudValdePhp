@@ -1,11 +1,14 @@
 <?php
 
     require_once "conexion.class.php";
-    define("ACTIVO", 1);
-    define("INACTIVO", 0);
+    
+    // Constantes usadas en el activocontroller para el funcionamiento de activar/desactivar
+    const ACTIVO = 1;
+    const INACTIVO = 0;
 
     class Cliente {
 
+        // Listado
         function listar()
         {
 
@@ -31,6 +34,7 @@
             }
         }
 
+        // Alta
     	function alta ($cliente) {
     		
             $conn = new Conexion();
@@ -50,6 +54,7 @@
             }
     	}
 
+        // Baja
     	function baja ($id) {
     		
             $conn = new Conexion();
@@ -60,17 +65,17 @@
                 $stmt->bindParam('id', $id, PDO::PARAM_STR);
                 $stmt->execute();
 
-                if ($stmt->rowCount() == 1) {
-                    return "Cliente dado de baja exitosamente.";
-                }
+                return true;
+
             } catch (PDOException $e) {
                 $e->getMessage();
             }
 
-            return "Error al cargar cliente.";            
+            return false;            
 
     	}
 
+        // Modificación
     	function modificar ($cliente) {
     		
             $conn = new Conexion();
@@ -78,7 +83,7 @@
             try {
                 $sql  = "UPDATE clientes " . 
                         "SET nombre = :nombre, apellido = :apellido, " . 
-                        "fecha_nac = :fecha_nac, nacionalidad_id = :nacionalidad_id, activo = :activo " . 
+                        "fecha_nac = :fecha_nac, nacionalidad_id = :nacionalidad_id, activo = :activo " .
                         "WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam('id', $cliente['id'], PDO::PARAM_STR);
@@ -91,17 +96,18 @@
 
                 if($stmt->rowCount() > 0)
                 {
-                    return "Cliente actualizado correctamente.";
+                    return true;
                 }
 
             } catch (PDOException $e) {
                 $e->getMessage();
             }
 
-            return "Error al actualizar cliente.";
+            return false;
 
     	}
 
+        // Activación/desactivación
         function activo ($id, $cambio) {
             
             $conn = new Conexion();
@@ -117,17 +123,18 @@
 
                 if($stmt->rowCount() > 0)
                 {
-                    return "Cliente actualizado correctamente.";
+                    return true;
                 }
 
             } catch (PDOException $e) {
                 $e->getMessage();
             }
 
-            return "Error al actualizar cliente.";
+            return false;
 
         }
 
+        // Consulta específica de un cliente
     	function consulta ($id) {
     		
             $conn = new Conexion();

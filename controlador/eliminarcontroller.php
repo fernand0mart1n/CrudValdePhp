@@ -12,6 +12,16 @@
 
 		$clientes = $cli::baja($id);
 
+		/*if($clientes){
+
+			$_SESSION["mensaje"] = "El cliente " . $cli["nombre"] . " " . $cli["apellido"] . " ha sido dado de baja";	
+
+		} else {
+
+			$_SESSION["mensaje"] = "ERROR";	
+			
+		}*/
+
 	} catch(Exception $e) {
 		header("Location: ../vistas/home.php?msg".$e->getMessage());
 	}

@@ -3,6 +3,7 @@
 	session_start();
 
 	require_once "../modelo/cliente.class.php";
+	require_once "validatorcontroller.php";
 
 	$title = "Listado de clientes";
 
@@ -12,12 +13,18 @@
 		$cliente  = new Cliente();
 		$clientes = $cliente::listar();
 
-		/*foreach ($clientes as &$cliente) {
-			//Acá va el parseo de edad
-		}*/
+		// Calculamos la edad para cada clientes, sólo para mostrarla en el listado
+		foreach ($clientes as &$cliente) {
+			$cliente["fecha_nac"] = calcularEdad($cliente["fecha_nac"]);
+		}
 
 		require "../vistas/home.php";
 
+		/*
+		Acá borramos cualquier mensaje que estemos mostrando
+		ahora, para la futura recarga de la página
+		*/
+		
 		unset($_SESSION["mensaje"]);
 
 	} catch(Exception $e) {

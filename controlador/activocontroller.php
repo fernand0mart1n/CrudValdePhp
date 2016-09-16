@@ -8,6 +8,8 @@
 		
 		try
 		{
+			
+			// Los botones activar/desactivar derivan a este lugar
 			$id      = $_GET['id'];
 			$activo  = $_GET['activo'];
 			$cliente = new Cliente();
@@ -15,15 +17,33 @@
 
 			$cli = $cli::consulta($id);
 
+			// Evaluamos si debemos activar o desactivar el cliente
 			if ($activo == 1) {
+
 				$cliente = $cliente::activo($id, INACTIVO);
 
-				$_SESSION["mensaje"] = "El cliente " . $cli["nombre"] . " " . $cli["apellido"] . " ha sido desactivado";
+				if($cliente){
+
+					$_SESSION["mensaje"] = "El cliente " . $cli["nombre"] . " " . $cli["apellido"] . " ha sido desactivado";	
+
+				} else {
+
+					$_SESSION["mensaje"] = "ERROR";	
+					
+				}
 
 			} else {
 				$cliente = $cliente::activo($id, ACTIVO);
 
-				$_SESSION["mensaje"] = "El cliente " . $cli["nombre"] . " " . $cli["apellido"] . " ha sido activado";
+				if($cliente){
+
+					$_SESSION["mensaje"] = "El cliente " . $cli["nombre"] . " " . $cli["apellido"] . " ha sido activado";	
+					
+				} else {
+
+					$_SESSION["mensaje"] = "ERROR";	
+
+				}
 			}
 
 			header("Location: homecontroller.php");

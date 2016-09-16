@@ -26,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($clientes as $cliente): ?>
+                    <?php foreach ($clientes as &$cliente): ?>
                         <tr>
                             <td class="nombre">
                                 <?php echo $cliente["nombre"]; ?>
