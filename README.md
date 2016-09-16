@@ -1,5 +1,8 @@
 # CrudValdePhp
 
+Diario de desarrollo
+- https://trello.com/b/TgxPzZZT/crud-php
+
 Requerimientos
 - Bower
 
