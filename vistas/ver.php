@@ -17,7 +17,7 @@
             <div class="form-group">
                 <label class="col-xs-4 control-label" for="fecha"><b>Fecha de nacimiento:</b></label>
                 <div class="col-xs-8">
-                    <input type="date" value="<?php echo $cliente["fecha_nac"]; ?>" id="fecha" name="fecha" class="form-control" readonly>
+                    <input type="date" value="<?php echo $cliente["fecha_nac"]; ?>" id="fecha" name="fecha" class="form-control" placeholder="dd/mm/yyyy" readonly>
                 </div>
             </div>
             <div class="form-group">

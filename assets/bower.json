@@ -1,0 +1,20 @@
+{
+  "name": "assets",
+  "homepage": "https://github.com/valde1992/CrudValdePhp",
+  "authors": [
+    "valde1992 <fernando_valde@hotmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="fecha_nac"><strong>Fecha de nacimiento:</strong></label>
                     <div class="col-xs-8">
-                        <input type="date" value="<?php echo $cliente["fecha_nac"]; ?>" id="fecha_nac" name="fecha_nac" class="form-control" required>
+                        <input type="date" value="<?php echo $cliente["fecha_nac"]; ?>" id="fecha_nac" name="fecha_nac" class="form-control" placeholder="dd/mm/yyyy" required>
                         <?php if(!empty($_SESSION["errores"]["fecha_nac"])): ?>
                             <div class="alert alert-danger alert-dismissable" role="alert">
                             <button type="button" class="close" aria-label="Close">
