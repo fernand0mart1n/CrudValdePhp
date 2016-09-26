@@ -1,9 +1,9 @@
 <?php require "layout.php"; ?>
     <body>
         <div class="col-xs-offset-1 col-xs-10 ">
+            <h3 class="page-header">Clientes</h3>
             <table class="table table-responsive table-bordered table-striped table-hover table-condensed">
                 <thead>
-                    <h3>Clientes</h3>
                     <tr>
                         <th>
                             Nombre

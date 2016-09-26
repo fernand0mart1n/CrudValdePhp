@@ -5,22 +5,22 @@ $(document).ready(function(){
         var info           = 'id=' + del_id;
         var nombreCompleto = (element.parents("td").siblings(".nombre").html()).trim() + " " +
         (element.parents("td").siblings(".apellido").html()).trim();
-        if(confirm("¿Está seguro de que desea borrar al cliente " + nombreCompleto + "?"))
-        {
+        if(confirm("¿Está seguro de que desea borrar al cliente " + nombreCompleto + "?")) {
             $.ajax({
                 type: "POST",
                 url: "eliminarcontroller.php",
                 data: info,
                 success: function(){
+                    $(this).parents("tr").animate({ backgroundColor: "#003" }, "500")
+                    .animate({ opacity: "hide" }, "1000");
+
+                    $(".table-footer").before('<div class="alert alert-info" role="alert">' +
+                                              '<strong>El cliente ' + nombreCompleto + ' ha sido eliminado</strong>' +
+                                              '</div>');
+
+                    window.location.href = 'homecontroller.php';
                 }
             });
-            $(this).parents("tr").animate({ backgroundColor: "#003" }, "500")
-            .animate({ opacity: "hide" }, "1000");
-
-            $(".table-footer").before('<div class="alert alert-info" role="alert">' +
-                                      '<strong>El cliente ' + nombreCompleto + ' ha sido eliminado</strong>' +
-                                      '</div>');
-
         }
 
         return false;
