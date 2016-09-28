@@ -1,5 +1,4 @@
 <?php require "layout.php"; ?>
-    <body>
         <legend>Ver cliente</legend>
         <div class="form form-horizontal responsive col-xs-offset-3 col-xs-6">
             <div class="form-group">

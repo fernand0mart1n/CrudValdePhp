@@ -1,31 +1,25 @@
-$(document).ready(function(){
-    $(".delete").click(function(){
-        var element        = $(this);
-        var del_id         = element.attr("id");
-        var info           = 'id=' + del_id;
-        var nombreCompleto = (element.parents("td").siblings(".nombre").html()).trim() + " " +
-        (element.parents("td").siblings(".apellido").html()).trim();
-        if(confirm("¿Está seguro de que desea borrar al cliente " + nombreCompleto + "?")) {
-            $.ajax({
-                type: "POST",
-                url: "eliminarcontroller.php",
-                data: info,
-                success: function(){
-                    $(this).parents("tr").animate({ backgroundColor: "#003" }, "500")
-                    .animate({ opacity: "hide" }, "1000");
+function eliminar(cliente_id){
+    
+    var info = 'id=' + cliente_id;
 
-                    $(".table-footer").before('<div class="alert alert-info" role="alert">' +
-                                              '<strong>El cliente ' + nombreCompleto + ' ha sido eliminado</strong>' +
-                                              '</div>');
-
-                    window.location.href = 'homecontroller.php';
-                }
-            });
-        }
-
-        return false;
-
+    $("#myModal").modal("show");
+    
+    $("#btnDel").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "eliminarcontroller.php",
+            data: info,
+            success: function(){
+                window.location.href = 'homecontroller.php';
+            }
+        });
     });
+
+    return false;
+
+}
+
+$(document).ready(function(){
 
     $(".alert-danger button.close").click(function (e) {
         $(this).parent().hide('slow');

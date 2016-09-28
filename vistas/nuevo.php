@@ -1,5 +1,4 @@
 <?php require "layout.php"; ?>
-    <body>
         <legend>Nuevo cliente</legend>
         <div class="col-xs-offset-3 col-xs-6">
             <form class="form form-horizontal" method="POST" action="../controlador/nuevocontroller.php">
