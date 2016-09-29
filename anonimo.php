@@ -11,9 +11,19 @@
 
 		<div class="row">
 			<div class="well col-xs-offset-1 col-xs-6">
-				<span class="glyphicon glyphicon-alert"></span> 
 				Debe ingresar para poder ver el listado y realizar operaciones.
 			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-offset-1 col-xs-3">
+				<?php if(!empty($_SESSION["errores"])): ?>
+	                <div class="alert alert-danger alert-dismissable" role="alert">
+	                <button type="button" class="close" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	                <strong><span class="glyphicon glyphicon-alert"></span> <?php echo $_SESSION["errores"]; ?></strong></div>
+	            <?php endif; ?>
+	        </div>
 		</div>
 	</body>
 </html>

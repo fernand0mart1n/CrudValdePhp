@@ -84,7 +84,7 @@
                         <a class="btn btn-default" href="homecontroller.php">
                             <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
                         </a>
-                        <button type="submit" class="btn btn-primary pull-right">Editar <span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="submit" class="btn btn-primary pull-right">Guardar <span class="glyphicon glyphicon-floppy-save"></span></button>
                     </div>
                 </div>
             </form>

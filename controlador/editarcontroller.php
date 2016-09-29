@@ -2,77 +2,86 @@
 
 	session_start();
 
-	require_once "../modelo/cliente.class.php";
-	require_once "../modelo/nacionalidad.class.php";
+	require_once "sesioncontroller.php";
 
-	$title = "Editar cliente";
+	// si está logueado, lo dejamos acceder al listado y a las operaciones
+	if(estaLogueado()){
 
-	if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
-		
-		try
-		{
+		require_once "../modelo/cliente.class.php";
+		require_once "../modelo/nacionalidad.class.php";
 
-			// Traemos los datos del cliente para mostrarlos en el form para su edición
-			$id      = $_GET['id'];
-			$cliente = new Cliente();
-			$cliente = $cliente::consulta($id);
+		$title = "Editar cliente";
 
-			$nacionalidades = new Nacionalidad();
-			$nacionalidad   = $nacionalidades::listar();
+		if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
+			
+			try
+			{
 
-			$title .= " " . $cliente['nombre'] . " " . $cliente['apellido'];
+				// Traemos los datos del cliente para mostrarlos en el form para su edición
+				$id      = $_GET['id'];
+				$cliente = new Cliente();
+				$cliente = $cliente::consulta($id);
 
-			require "../vistas/editar.php";
+				$nacionalidades = new Nacionalidad();
+				$nacionalidad   = $nacionalidades::listar();
 
-			unset($_SESSION["errores"]);
+				$title .= " " . $cliente['nombre'] . " " . $cliente['apellido'];
 
-		} catch(Exception $e) {
-			header("Location: ../vistas/home.php?msg".$e->getMessage());
+				require "../vistas/editar.php";
+
+				unset($_SESSION["errores"]);
+
+			} catch(Exception $e) {
+				header("Location: ../vistas/home.php?msg".$e->getMessage());
+			}
+			die();
+
 		}
-		die();
 
-	}
+		if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+			require "validatorcontroller.php";
 
-		require "validatorcontroller.php";
+			$cliente["id"]              = $_POST['id'];
+			$cliente["nombre"]          = $_POST['nombre'];
+			$cliente["apellido"]        = $_POST['apellido'];
+			$cliente["fecha_nac"]       = $_POST['fecha_nac'];
+			$cliente["nacionalidad_id"] = $_POST['nacionalidad_id'];
+			$cliente["activo"]          = $_POST['activo'];
 
-		$cliente["id"]              = $_POST['id'];
-		$cliente["nombre"]          = $_POST['nombre'];
-		$cliente["apellido"]        = $_POST['apellido'];
-		$cliente["fecha_nac"]       = $_POST['fecha_nac'];
-		$cliente["nacionalidad_id"] = $_POST['nacionalidad_id'];
-		$cliente["activo"]          = $_POST['activo'];
+			// Validamos los datos
+			$_SESSION["errores"] = validarCliente($cliente);
 
-		// Validamos los datos
-		$_SESSION["errores"] = validarCliente($cliente);
+			// Verificamos si hay errores, si hay volvemos al form y los mostramos
+			if(count($_SESSION["errores"])) {
 
-		// Verificamos si hay errores, si hay volvemos al form y los mostramos
-		if(count($_SESSION["errores"])) {
-
-			header("Location: editarcontroller.php?id=" . $cliente["id"]);
-
-		} else {
-
-			// Si no hay errores, pegamos en  la BD
-			$cli      = new Cliente();
-			$clientes = $cli::modificar($cliente);
-
-			// Si salió bien, informamos
-			if($clientes){
-
-				$_SESSION["mensaje"] = "El cliente " . $cliente["nombre"] . " " . $cliente["apellido"] . " ha sido modificado éxitosamente";
+				header("Location: editarcontroller.php?id=" . $cliente["id"]);
 
 			} else {
 
-				$_SESSION["errores"] = "ERROR";	
-					
+				// Si no hay errores, pegamos en  la BD
+				$cli      = new Cliente();
+				$clientes = $cli::modificar($cliente);
+
+				// Si salió bien, informamos
+				if($clientes){
+
+					$_SESSION["mensaje"] = "El cliente " . $cliente["nombre"] . " " . $cliente["apellido"] . " ha sido modificado éxitosamente";
+
+				} else {
+
+					$_SESSION["errores"] = "ERROR";	
+						
+				}
+
+				header("Location: homecontroller.php");
+
 			}
 
-			header("Location: homecontroller.php");
+			die();
 
 		}
-
-		die();
-
+	} else {
+		// si no está logueado, lo mandamos a la vista anónimo donde no podrá ver nada hasta loguearse
+		require "../anonimo.php";
 	}

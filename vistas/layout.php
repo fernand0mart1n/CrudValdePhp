@@ -54,11 +54,11 @@
                             <form class="form" method="POST" action="logincontroller.php">
                                 <div class="form-group">
                                     <label for="nombre">Usuario:</label>
-                                    <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control" placeholder="Usuario">
+                                    <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control" placeholder="Usuario" required autofocus>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Contraseña:</label>
-                                    <input type="password" name="password" id="password"  class="form-control" placeholder="Contraseña">
+                                    <input type="password" name="password" id="password"  class="form-control" placeholder="Contraseña" required>
                                 </div>
                                 <input type="hidden" name="accion" id="accion" value="login">
                                 <button type="submit" class="center-block btn btn-success">Ingresar <span class="glyphicon glyphicon-log-in"></span></button>

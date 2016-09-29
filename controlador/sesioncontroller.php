@@ -18,11 +18,27 @@
 		// buscamos que el usuario ingresado exista
 		$usuario2 = Usuario::buscarUsuario($nombre_usuario);
 		
-		// si la contraseña ingresada coincide con el hash de la bd, logueo y seteo su nombre de usuario
-		if(password_verify($password, $usuario2['password'])){
-			$_SESSION['usuario']  = $usuario2['nombre_usuario'];
-			//$_SESSION['permisos'] = $usuario2['permisos'];
+		// verificamos que encontró al usuario
+		if(empty($usuario2)){
+			
+			// si hay errores, los mostramos
+			$_SESSION['errores'] = "El usuario ingresado no existe.";
+
+		} else {
+
+			// si la contraseña ingresada coincide con el hash de la bd, logueo y seteo su nombre de usuario
+			if(password_verify($password, $usuario2['password'])){
+				$_SESSION['usuario']  = $usuario2['nombre_usuario'];
+				//$_SESSION['permisos'] = $usuario2['permisos'];
+			} else {
+				// si hay errores, los mostramos
+				$_SESSION['errores'] = "Contraseña incorrecta.";				
+			}	
 		}
+
+		
+
+
 
 		// redirigimos al controller que lo patea al listado
 		header('Location: homecontroller.php');
