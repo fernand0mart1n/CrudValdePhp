@@ -6,6 +6,7 @@
 	require_once "validatorcontroller.php";
 	require_once "sesioncontroller.php";
 
+	// si está logueado, lo dejamos acceder al listado y a las operaciones
 	if(estaLogueado()){
 
 		$title = "Listado de clientes";
@@ -36,5 +37,6 @@
 
 		die(); 
 	} else {
+		// si no está logueado, lo mandamos a la vista anónimo donde no podrá ver nada hasta loguearse
 		require "../anonimo.php";
 	}

@@ -4,7 +4,7 @@
 
     class Usuario {
 
-        // Devolvemos el usuario
+        // función que devuelve el usuario
         function buscarUsuario($nombre_usuario)
         {
 

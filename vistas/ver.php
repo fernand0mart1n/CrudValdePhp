@@ -1,5 +1,5 @@
 <?php require "layout.php"; ?>
-        <legend>Ver cliente</legend>
+        <legend>Ver cliente <?php echo $cliente['nombre'] . " " . $cliente['apellido']; ?></legend>
         <div class="form form-horizontal responsive col-xs-offset-3 col-xs-6">
             <div class="form-group">
                 <label class="col-xs-4 control-label" for="nombre"><b>Nombre:</b></label>

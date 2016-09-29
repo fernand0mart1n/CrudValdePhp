@@ -14,6 +14,8 @@
 			$cliente = new Cliente();
 			$cliente = $cliente::consulta($id);
 
+			$title .= " " . $cliente['nombre'] . " " . $cliente['apellido'];
+
 			require "../vistas/ver.php";
 			
 		} catch(Exception $e) {

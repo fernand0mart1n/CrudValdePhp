@@ -2,6 +2,7 @@
 
 	require "../modelo/usuario.class.php";
 
+	// funcion que devuelve verdadero o falso en función de si el usuario ingresó o no
 	function estaLogueado()
 	{
 		if(isset($_SESSION['usuario']) && $_SESSION['usuario']){
@@ -11,31 +12,37 @@
 		}
 	}
 
+	// función encargada de loguear
 	function login($nombre_usuario, $password) 
 	{
-		
+		// buscamos que el usuario ingresado exista
 		$usuario2 = Usuario::buscarUsuario($nombre_usuario);
 		
+		// si la contraseña ingresada coincide con el hash de la bd, logueo y seteo su nombre de usuario
 		if(password_verify($password, $usuario2['password'])){
 			$_SESSION['usuario']  = $usuario2['nombre_usuario'];
 			//$_SESSION['permisos'] = $usuario2['permisos'];
 		}
 
+		// redirigimos al controller que lo patea al listado
 		header('Location: homecontroller.php');
 		die();
 	}
 
+	// función que elimina los datos del usuario y mata la sesión
 	function logout() 
 	{
-		session_unset();
-		session_destroy();
-		session_start();
-		session_regenerate_id(true);
+		session_unset();   // limpiamos la variable $_SESSION
+		session_destroy(); // destruimos la sesión
+		session_start();   // nueva sesión para asegurar de que la anterior no existe
+		session_regenerate_id(true); // actualizamos el id de la sesión
 
+		// redirigimos a la vista que sólo permite loguear
 		header('Location: homecontroller.php');
 		die();
 	}
 
+	// función que comprueba permisos
 	function tienePermiso($accion)
 	{
 		if(isset($_SESSION['permisos']) && $_SESSION['permisos'][$accion]){

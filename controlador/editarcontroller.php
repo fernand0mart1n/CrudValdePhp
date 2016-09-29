@@ -20,6 +20,8 @@
 			$nacionalidades = new Nacionalidad();
 			$nacionalidad   = $nacionalidades::listar();
 
+			$title .= " " . $cliente['nombre'] . " " . $cliente['apellido'];
+
 			require "../vistas/editar.php";
 
 			unset($_SESSION["errores"]);
@@ -63,7 +65,7 @@
 
 			} else {
 
-				$_SESSION["mensaje"] = "ERROR";	
+				$_SESSION["errores"] = "ERROR";	
 					
 			}
 
