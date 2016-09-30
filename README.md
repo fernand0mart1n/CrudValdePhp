@@ -15,3 +15,8 @@ Pasos para el "deploy"
 - Ubicarse en la carpeta assets y hacer "bower install"
 - Correr preferentemente sobre apache e ingresar a /CrudValdePhp
 - ¡Voilá!
+
+Una vez corriendo la aplicación, usar los siguientes usuarios y contraseñas:
+
+- usuario:usuario
+- administrador:administrador
