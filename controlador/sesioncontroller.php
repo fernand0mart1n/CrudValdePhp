@@ -12,6 +12,17 @@
 		}
 	}
 
+	// función que hashea la contraseña antes de compararla con la de la BD
+	function hashearPassword($input) {
+    $pass = strtoupper(
+        sha1(
+                sha1($input, true)
+        )
+    );
+    $pass = '*' . $pass;
+    return $pass;
+}
+
 	// función encargada de loguear
 	function login($nombre_usuario, $password) 
 	{
@@ -27,7 +38,7 @@
 		} else {
 
 			// si la contraseña ingresada coincide con el hash de la bd, logueo y seteo su nombre de usuario
-			if(password_verify($password, $usuario2['password'])){
+			if(hashearPassword($password) == $usuario2['password']){
 				$_SESSION['usuario']  = $usuario2['nombre_usuario'];
 				//$_SESSION['permisos'] = $usuario2['permisos'];
 			} else {
@@ -35,10 +46,6 @@
 				$_SESSION['errores'] = "Contraseña incorrecta.";				
 			}	
 		}
-
-		
-
-
 
 		// redirigimos al controller que lo patea al listado
 		header('Location: homecontroller.php');

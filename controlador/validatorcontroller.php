@@ -34,6 +34,8 @@
 	function validarCliente($cliente)
 	{
 
+		$errores;
+
 		// Que el nombre no sea número ni venga vacío
 		if(is_numeric($cliente["nombre"])){
 			$errores["nombre"] = "El nombre no puede ser únicamente números";
