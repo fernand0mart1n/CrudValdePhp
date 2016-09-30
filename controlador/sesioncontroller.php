@@ -39,11 +39,21 @@
 
 			// si la contraseña ingresada coincide con el hash de la bd, logueo y seteo su nombre de usuario
 			if(hashearPassword($password) == $usuario2['password']){
+				
 				$_SESSION['usuario']  = $usuario2['nombre_usuario'];
-				//$_SESSION['permisos'] = $usuario2['permisos'];
+
+				// traigo los permisos y los guardo en la sesión
+				$permisos = Usuario::buscarPermisos($usuario2['id']);
+
+				$permisos = listarPermisos($permisos);
+				
+				$_SESSION['permisos'] = $permisos;
+
 			} else {
+				
 				// si hay errores, los mostramos
 				$_SESSION['errores'] = "Contraseña incorrecta.";				
+			
 			}	
 		}
 
@@ -65,10 +75,21 @@
 		die();
 	}
 
+	function listarPermisos($permisos) 
+	{
+
+		foreach ($permisos as $key => $permiso) {
+			$permisos2[$key] = $permiso['rol'];
+		}
+
+		return $permisos2;
+
+	}
+
 	// función que comprueba permisos
 	function tienePermiso($accion)
 	{
-		if(isset($_SESSION['permisos']) && $_SESSION['permisos'][$accion]){
+		if(isset($_SESSION['permisos']) && in_array($accion, $_SESSION['permisos'])){
 			return true;
 		} else {
 			return false;

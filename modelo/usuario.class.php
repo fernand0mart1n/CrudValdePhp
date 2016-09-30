@@ -28,4 +28,30 @@
                 $e->getMessage();
             }
         }
+
+        // función que trae los permisos
+        function buscarPermisos($id)
+        {
+
+            $conn = new Conexion();
+
+            try {
+                $sql  = "SELECT usuario_rol.rol " .
+                        "FROM usuario_rol " . 
+                        "WHERE usuario = :id";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam('id', $id, PDO::PARAM_STR);
+                $stmt->execute();
+
+                if($stmt->rowCount() > 0)
+                {
+                    $permisos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    return $permisos;
+                
+                }
+
+            }catch (PDOException $e) {
+                $e->getMessage();
+            }
+        }
     }

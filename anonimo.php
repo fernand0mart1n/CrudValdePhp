@@ -2,7 +2,7 @@
 
 	// si por algún error está logueado, lo redigimos al homecontroller para que pueda ver el listado
 	if(estaLogueado()){
-		header('Location: controlador/homecontroller.php');
+		header('Location: homecontroller.php');
 		die();
 	}
 

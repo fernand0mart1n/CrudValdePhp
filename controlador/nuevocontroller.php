@@ -5,7 +5,7 @@
 	require_once "sesioncontroller.php";	
 
 	// si está logueado, lo dejamos acceder al listado y a las operaciones
-	if(estaLogueado()){
+	if(estaLogueado() && tienePermiso("1")){
 
 		require_once "../modelo/cliente.class.php";
 		require_once "../modelo/nacionalidad.class.php";
@@ -63,6 +63,7 @@
 				$_SESSION["mensaje"] = "El cliente " . $cliente["nombre"] . " " . $cliente["apellido"] . " ha sido creado éxitosamente";
 
 				header("Location: homecontroller.php");
+				unset($_SESSION["errores"]);
 
 			}
 
@@ -71,5 +72,9 @@
 		}
 	} else {
 		// si no está logueado, lo mandamos a la vista anónimo donde no podrá ver nada hasta loguearse
-		require "../anonimo.php";
+		$_SESSION["errores"] = "Usted no tiene permiso o no está logueado.";	
+
+		unset($_SESSION["errores"]);
+		
+		require "homecontroller.php";
 	}

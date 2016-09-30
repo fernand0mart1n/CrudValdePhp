@@ -44,9 +44,11 @@
                     <a class="btn btn-default" href="homecontroller.php">
                         <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
                     </a>
-                    <a class="btn btn-primary pull-right" href="editarcontroller.php?id=<?php echo $cliente["id"] ?>">
-                        Editar <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
+                    <?php if(tienePermiso("2")): ?>
+                        <a class="btn btn-primary pull-right" href="editarcontroller.php?id=<?php echo $cliente["id"] ?>">
+                            Editar <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

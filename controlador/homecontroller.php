@@ -31,6 +31,7 @@
 			*/
 			
 			unset($_SESSION["mensaje"]);
+			unset($_SESSION["errores"]);
 
 		} catch(Exception $e) {
 			header("Location: ../vistas/home.php?msg".$e->getMessage());
@@ -41,6 +42,8 @@
 	} else {
 		// si no está logueado, lo mandamos a la vista anónimo donde no podrá ver nada hasta loguearse
 		require "../anonimo.php";
+
+		$_SESSION["errores"] = "Usted no tiene permiso o no está logueado.";	
 
 		unset($_SESSION["errores"]);
 

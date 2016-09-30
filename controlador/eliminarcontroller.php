@@ -5,7 +5,7 @@
 	require_once "sesioncontroller.php";	
 
 	// si está logueado, lo dejamos acceder al listado y a las operaciones
-	if(estaLogueado()){
+	if(estaLogueado() && tienePermiso("3")){
 
 		require_once "../modelo/cliente.class.php";
 
@@ -33,5 +33,9 @@
 		}
 	} else {
 		// si no está logueado, lo mandamos a la vista anónimo donde no podrá ver nada hasta loguearse
-		require "../anonimo.php";
+		$_SESSION["errores"] = "Usted no tiene permiso o no está logueado.";	
+
+		unset($_SESSION["errores"]);
+
+		require "homecontroller.php";
 	}
