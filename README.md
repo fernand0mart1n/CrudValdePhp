@@ -18,5 +18,5 @@ Pasos para el "deploy"
 
 Una vez corriendo la aplicación, usar los siguientes usuarios y contraseñas:
 
-usuario:usuario
-administrador:administrador
+- usuario:usuario
+- administrador:administrador
